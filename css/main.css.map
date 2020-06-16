@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "../public/templete/sass/main.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
