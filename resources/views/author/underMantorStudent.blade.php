@@ -32,7 +32,7 @@
             <a href="{{route('author.showComment',[$student->id])}}"><i class="material-icons">comment</i>Comment</a>
           </td>
           <td>
-            <a data-toggle="modal" data-target="#basicExampleModal{{$student->id}}" href="{{route('admin.showSpecficStudent',$student->id)}}"><span class="material-icons">visibility</span></a>
+            <a data-toggle="modal" data-target="#basicExampleModal{{$student->id}}" href="#"><span class="material-icons">visibility</span></a>
             <!-- Modal -->
             <div class="modal fade" id="basicExampleModal{{$student->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">

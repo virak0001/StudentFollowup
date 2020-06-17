@@ -76,7 +76,12 @@
                                     <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Position') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="position" type="text" class="form-control" name="position" required autocomplete="position">
+                                        <select class="form-control" name="position" id="">
+                                            <option disabled selected >Choose Position...</option>
+                                            @foreach ($positions as $position)
+                                            <option value="{{$pos['id']}}">{{$position['name']}}</option>
+                                            @endforeach  
+                                        </select>
                                     </div>
                                 </div>
 

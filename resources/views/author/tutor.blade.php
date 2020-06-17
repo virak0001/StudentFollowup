@@ -23,7 +23,7 @@
             </a>
           </td>
           <td>{{$tutors->first_name}}.{{$tutors->last_name}}</td>
-          <td>{{$tutors->position}}</td>
+          <td>{{$tutors->position['name']}}</td>
           <td>{{$tutors->email}}</td>
           <td>{{$tutors->address}}</td>
           

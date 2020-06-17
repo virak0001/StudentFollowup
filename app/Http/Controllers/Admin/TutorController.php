@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Position;
 use App\Student;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -128,7 +129,8 @@ class TutorController extends Controller
     }
 
     public function profile(){
-        return view('admin.chnageProfile');
+        $positions = Position::all();
+        return view('admin.chnageProfile',compact('positions'));
     }
 
     public function changeTutorName(Request $request){
@@ -141,7 +143,7 @@ class TutorController extends Controller
 
     public function updatePosition(Request $request){
         $user = User::find(Auth::id());
-        $user -> position = $request ->get('position');
+        $user -> position_id = $request ->get('position');
         $user -> save();
         return back();
     }

@@ -18,12 +18,10 @@
         @foreach ($tutors as $tutors)
         <tr>
           <td>
-            <a href="#">
               <img class="profile-image" src="{{asset('assets/img/'.$tutors->profile)}}" width="40" height="40" style="border-radius: 50%;" alt="User" />
-            </a>
           </td>
           <td>{{$tutors->first_name}}.{{$tutors->last_name}}</td>
-          <td>{{$tutors->position}}</td>
+          <td>{{$tutors->position['name']}}</td>
           <td>{{$tutors->email}}</td>
           <td>{{$tutors->address}}</td>
           <td>

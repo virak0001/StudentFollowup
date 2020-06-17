@@ -15,29 +15,22 @@ class DashboardController extends Controller
     }
     
     public function index(){
-        $numbers_tutors = [
-            [
-                'title' => 'Tutors',
-                'numberOfTutors' => User::all()->count(),
-            ],
-        ];
         $number_student = [
-            [
+            
                 'title' => 'Total Students',
                 'numberStudent' => Student::all()->count(),
-            ],
+            
         ];
         
         $gender = [
-            [
+            
                 'male' => Student::all()->where('gender', 'Male')->count(),
                 'female' => Student::all()->where('gender', 'Female')->count(), 
-            ]
+            
         ];
         $students = Student::all();
         return view('author.dashboard')
                 ->with(array(
-                    'numbers_tutors'=>$numbers_tutors,
                     'numbers_student' => $number_student,
                     'gender' => $gender,
                     'students' => $students,

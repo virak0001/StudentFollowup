@@ -9,7 +9,20 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-    Auth::routes();
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@index')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
@@ -18,23 +31,17 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
     Route::resource('student','StudentController');
 
-    Route::get('showSpecficStudent/{id}','StudentController@showSpecficStudent')->name('showSpecficStudent');
-
     Route::get('edit\{id}','StudentController@edit')->name('edit');
     
     Route::PUT('statusAchive/{id}','StudentController@updateStatusAchive')->name('statusAchive');
 
     Route::PUT('statusFollowUp/{id}','StudentController@statusFollowUp')->name('statusFollowUp');
 
-    Route::resource('followUpStudent','StudentController');
-
     Route::get('showPageAddTutor\{id}', 'TutorController@showPageAddTutor')->name('showPageAddTutor');
 
     Route::PUT('addTutorToStudent\{tutorId}\{studentId}','StudentController@addTutorToStudent')->name('addTutorToStudent');
 
     Route::get('dashboard','DashboardController@index')->name('dashboard');
-
-    Route::get('achiveStudent','StudentController@achiveStudent')->name('achiveStudent');
 
     Route::get('showAddStudent','StudentController@showAddStudent')->name('showAddStudent');
 
@@ -44,7 +51,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
     Route::PUT('editComment/{id_comment}','CommentController@editComment')->name('editComment');
 
-    Route::get('deleteComment\{id_comment}','CommentController@deleteComment')->name('deleteComment');
+    Route::delete('deleteComment\{id_comment}','CommentController@deleteComment')->name('deleteComment');
 
     Route::PUT('changePictureStudent\{id}','StudentController@changePictureStudent')->name('changePictureStudent');
 
@@ -67,11 +74,7 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
 
     Route::get('tutor','TutorController@index')->name('tutor');
 
-    Route::get('achiveStudent','StudentController@achiveStudent')->name('achiveStudent');
-
     Route::get('unserMentor','StudentController@unserMentor')->name('unserMentor');
-
-    Route::get('followUpStudent','StudentController@followUpStudent')->name('followUpStudent');
 
     Route::PUT('changeProfilePicture','TutorController@changeProfilePicture')->name('changeProfilePicture');
 

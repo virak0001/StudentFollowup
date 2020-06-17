@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\position;
 
 class TutorController extends Controller
 {
@@ -47,7 +48,8 @@ class TutorController extends Controller
     }
 
     public function profile(){
-        return view('author.chnageProfile');
+        $positions = Position::all();
+        return view('author.chnageProfile',compact('positions'));
     }
 
     public function changeTutorName(Request $request){
@@ -60,7 +62,7 @@ class TutorController extends Controller
 
     public function updatePosition(Request $request){
         $user = User::find(Auth::id());
-        $user -> position = $request ->get('position');
+        $user -> position_id = $request ->get('position');
         $user -> save();
         return back();
     }

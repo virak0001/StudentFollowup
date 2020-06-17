@@ -35,7 +35,7 @@
               </a>
             </td>
             <td>{{$tutor->first_name}}.{{$tutor->last_name}}</td>
-            <td>{{$tutor->position}}</td>
+            <td>{{$tutor->position['name']}}</td>
             <td>{{$tutor->email}}</td>
             <td>{{$tutor->address}}</td>
             <td>

@@ -28,18 +28,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('admin.achiveStudent')}}">
-                    <span class="material-icons text-success">people</span>
-                    <p style="margin-left: 15px;">Achive Student</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{route('admin.followUpStudent.index')}}">
-                    <span class="material-icons text-info">people</span>
-                    <p style="margin-left: 15px;">Follow Up Student</p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{route('admin.unserMentor')}}">
                     <span class="material-icons text-danger">people</span>
                     <p style="margin-left: 15px;">Under Mentor</p>

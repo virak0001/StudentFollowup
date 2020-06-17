@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Position;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -47,6 +48,11 @@ class RegisterController extends Controller
         $this->middleware('guest')->except('logout');;
     }
 
+    public function index(){
+        $positions = Position::all();
+        return view('auth.register',compact('positions'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -80,7 +86,7 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'address' => $data['address'],
             'email' => $data['email'],
-            'position' => $data['position'],
+            'position_id' => $data['position'],
             'password' => Hash::make($data['password']),
             ]); 
     }

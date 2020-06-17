@@ -9,6 +9,7 @@
         <p class="text-center">{{$students['first_name']}}.{{$students['last_name']}}</p>
         <div class="card mt-1" style="border-radius:5px">
           <div class="card-header">
+            Please leave your comments
             @foreach ($students->comments as $comment)
             <div class="row">
               <div class="col-1">
@@ -21,9 +22,12 @@
                   {{$comment->comment}}
                   @if (Auth::id() == $comment->user_id)
                   <a onclick="getValue({{$comment->id}})" style="cursor: pointer"><i class="material-icons text-primary" data-toggle="tooltip" data-placement="top" title="edit" style="font-size:10px">edit</i></a>
-                  <a onclick="document.getElementById('delete').submit()" href="{{route('admin.deleteComment',$comment->id)}}"><i class="material-icons text-primary" data-toggle="tooltip" data-placement="top" title="delete" style="font-size:10px">delete</i></a><br>
+                  <a onclick="document.getElementById('{{$comment->id}}').submit()" href="#"><i class="material-icons text-primary" data-toggle="tooltip" data-placement="top" title="delete" style="font-size:10px">delete</i></a><br>
+                  <form id="{{$comment->id}}" action="{{route('admin.deleteComment',$comment->id)}}" method="post">
+                    @csrf
+                    @method('delete')
+                  </form>
                   @endif
-
                 </p>
               </div>
             </div>
@@ -43,7 +47,6 @@
               <a href="#" id="send" onclick="document.getElementById('editForm').submit()"><i class="material-icons" style="margin-top:3px;">send</i></a>
             </form>
           </div>
-
         </div>
       </h6>
     </div>

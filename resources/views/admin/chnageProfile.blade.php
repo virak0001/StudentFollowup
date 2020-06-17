@@ -80,7 +80,7 @@
                             <div class="md-form form-sm" id="position">
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        {{Auth::user()->position}}
+                                        {{Auth::user()->position['name']}}
                                     </div>
                                     <div class="col-sm-1">
                                         <span id="edit-position" style="cursor:pointer" class="material-icons">edit</span>
@@ -94,7 +94,18 @@
                                         <form id="update-position" action="{{route('admin.updatePosition')}}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="text" name="position" value="{{Auth::user()->position}}" class="form-control form-control-sm">
+                                            <select class="form-control form-control-sm" name="position" id="">
+                                                <option value="{{Auth::user()->position['id']}}">{{Auth::user()->position['name']}}</option>
+                                                @foreach ($positions as $position)
+                                                <option
+                                                @if ($position['id'] == Auth::user()->position['id'])
+                                                    disabled hidden
+                                                @else
+                                                value="{{$position['id']}}">{{$position['name']}}
+                                                @endif 
+                                                </option>
+                                                @endforeach
+                                            </select>
                                         </form>
                                     </div>
                                     <div class="col-3">
@@ -137,7 +148,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="row">
-                                            <span onclick="document.getElementById('address-address').submit()" style="cursor:pointer" class="material-icons">done</span>
+                                            <span onclick="document.getElementById('update-address').submit()" style="cursor:pointer" class="material-icons">done</span>
                                             <span id="cancel-edit-address" style="cursor:pointer" class="material-icons">clear</span>
                                         </div>
                                     </div>

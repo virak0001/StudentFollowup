@@ -56,7 +56,7 @@
 
         <div class="form-group" style="margin-top:-10px">
           <label for="gender">Choose Picture</label>
-          <input type="file" name="picture" required>
+          <input type="file" name="picture">
         </div> <!-- form-group end.// -->
         <div class="form-group">
           <button type="submit" class="btn btn-primary"> Create New </button>

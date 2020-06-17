@@ -27,18 +27,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('author.achiveStudent')}}">
-                    <span class="material-icons text-success">people</span>
-                    <p style="margin-left: 15px;">Achive Student</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{route('author.followUpStudent')}}">
-                    <span class="material-icons text-info">people</span>
-                    <p style="margin-left: 15px;">Follow Up Student</p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{Route('author.unserMentor')}}">
                     <span class="material-icons text-danger">people</span>
                     <p style="margin-left: 15px;">Under Mentor</p>

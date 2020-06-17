@@ -12,42 +12,7 @@ class StudentController extends Controller
     public function __constructor(){
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function index()
-    {
-        $students = Student::all();
-
-        $number_student_follow_up = [
-            [
-                'title' => 'Follow Up',
-                'numberStudentFollowUp' => Student::all()->where('status', 1)->count(),
-            ],
-        ];
-        return view('admin.followUpStudent')->with(array('students'=>$students, 'number_student_follow_up'=>$number_student_follow_up));
-    }
-
-    /**
-     * Change status student to achive
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function achiveStudent(){
-        $students = Student::all();
-        $number_student_achive = [
-            [
-                'title' => 'Achive List',
-                'numberStudentAchive' => Student::all()->where('status', 0)->count(),
-            ],
-        ];
-        return view('admin.AchiveStudent')->with(array('students'=>$students,'number_student_achive'=>$number_student_achive));
-    }
-
-
+   
     /**
      * Change status student to follow up
      *
@@ -71,7 +36,7 @@ class StudentController extends Controller
         $student = Student::find($studentID);
         $student -> user_id = $tutor->id;
         $student -> save();
-        return redirect('admin/followUpStudent');
+        return back();
     }
 
     public function statusFollowUp($id){
@@ -103,17 +68,21 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $student =new Student;
-        request()->validate([
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $imageName = time().'.'.request()->picture->getClientOriginalExtension();
-        request()->picture->move(public_path('/img_student/'), $imageName);
+        if($request->picture == null){
+            $student -> picture = "student.png";
+        }else {
+            request()->validate([
+                'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time().'.'.request()->picture->getClientOriginalExtension();
+            request()->picture->move(public_path('/img_student/'), $imageName);
+            $student -> picture = $imageName;
+        }
         $student -> first_name = $request -> get('first_name');
         $student -> last_name = $request -> get('last_name');
         $student -> gender = $request -> get('gender');
         $student -> year = $request -> get('year');
         $student -> province = $request -> get('province');
-        $student -> picture = $imageName;
         $student -> class = $request -> get('class');
         $student -> student_id = $request -> get('student_id');
         $student -> save();
@@ -129,18 +98,6 @@ class StudentController extends Controller
     public function edit($id){
         $student = Student::find($id);
         return view('admin.editStudent')->with('student',$student);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function showSpecficStudent($id)
-    {
-        $student = Student::find($id);
-        return view('admin.viewSpecificStudent')->with('student',$student);
     }
 
     /**
