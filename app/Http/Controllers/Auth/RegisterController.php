@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::LOGIN;
+    protected $redirectTo = RouteServiceProvider::HOME;
      
     /**
      * Create a new controller instance.
@@ -45,7 +45,7 @@ class RegisterController extends Controller
         }else {
             $this -> redirectTo = route('author.dashboard');
         }
-        $this->middleware('guest')->except('logout');;
+        $this->middleware('guest')->except('logout');
     }
 
     public function index(){
