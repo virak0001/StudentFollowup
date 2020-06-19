@@ -29,10 +29,8 @@
                 <th class="th-sm">Profile</th>
                 <th class="th-sm">Name</th>
                 <th class="th-sm">Class</th>
-                <th class="th-sm">Gender</th>
                 <td class="th-sm">Tutor</td>
                 <th class="th-sm">Status</th>
-                <th class="th-sm">Student_ID</th>
                 <th class="th-sm">Comment</th>
                 <th class="th-sm">Action</th>
               </tr>
@@ -44,7 +42,6 @@
                 <td><img src="{{asset('img_student/'.$student->picture)}}" width="40" style="border-radius: 25px;" height="40" alt="User" /></td>
                 <td>{{$student->first_name}}.{{$student->last_name}}</td>
                 <td>{{$student->class}}</td>
-                <td>{{$student->gender}}</td>
                 <td class="text-center">
     
                   @if ($student->user_id == null)
@@ -87,7 +84,6 @@
                   </div>
                   @endif
                 </td>
-                <td>{{$student->student_id}}</td>
                 @if ($student->user_id!=null)
                 <td><a href="{{route('admin.showComment',[$student->id])}}"><i class="material-icons">comment</i>Comment</a></td>
                 @else
@@ -211,10 +207,8 @@
                 <th class="th-sm">Profile</th>
                 <th class="th-sm">Name</th>
                 <th class="th-sm">Class</th>
-                <th class="th-sm">Gender</th>
                 <td class="th-sm">Tutor</td>
                 <th class="th-sm">Status</th>
-                <th class="th-sm">Student_ID</th>
                 <th class="th-sm">Comment</th>
                 <th class="th-sm">Action</th>
               </tr>
@@ -230,11 +224,9 @@
                 <th class="th-sm">Profile</th>
                 <th class="th-sm">Name</th>
                 <th class="th-sm">Class</th>
-                <th class="th-sm">Gender</th>
                 <th class="th-sm">Tutor</th>
                 <th class="th-sm">Status</th>
-                <th class="th-sm">Student_ID</th>
-                <th class="th-sm">Provinc</th>
+                <th class="th-sm">Comment</th>
                 <th class="th-sm">Action</th>
               </tr>
             </thead>
@@ -245,7 +237,6 @@
                 <td><img src="{{asset('img_student/'.$student->picture)}}" width="40" style="border-radius: 25px;" height="40" alt="User" /></td>
                 <td>{{$student->first_name}}.{{$student->last_name}}</td>
                 <td>{{$student->class}}</td>
-                <td>{{$student->gender}}</td>
                 <td class="text-center">
     
                   @if ($student->user_id == null)
@@ -288,7 +279,6 @@
                   </div>
                   @endif
                 </td>
-                <td>{{$student->student_id}}</td>
                 @if ($student->user_id!=null)
                 <td><a href="{{route('admin.showComment',[$student->id])}}"><i class="material-icons">comment</i>Comment</a></td>
                 @else
@@ -412,11 +402,9 @@
                 <th class="th-sm">Profile</th>
                 <th class="th-sm">Name</th>
                 <th class="th-sm">Class</th>
-                <th class="th-sm">Gender</th>
                 <th class="th-sm">Tutor</th>
                 <th class="th-sm">Status</th>
-                <th class="th-sm">Student_ID</th>
-                <th class="th-sm">Provinc</th>
+                <th class="th-sm">Comment</th>
                 <th class="th-sm">Action</th>
               </tr>
             </tfoot>
